@@ -1,12 +1,12 @@
-import FreeSimpleGUI as sg
+import FreeSimpleGUI as sG
 
-label = sg.Text("What are dolphins?")
-option1 = sg.Radio("Amphibians", group_id="question1")
-option2 = sg.Radio("Fish", group_id="question1")
-option3 = sg.Radio("Mammals", group_id="question1")
-option4 = sg.Radio("Birds", group_id="question1")
+label = sG.Text("What are dolphins?")
+option1 = sG.Radio("Amphibians", group_id="question1")
+option2 = sG.Radio("Fish", group_id="question1")
+option3 = sG.Radio("Mammals", group_id="question1")
+option4 = sG.Radio("Birds", group_id="question1")
 
-window = sg.Window("File Compressor",
+window = sG.Window("File Compressor",
                    layout=[[label],
                            [option1],
                             [option2],
