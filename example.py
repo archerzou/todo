@@ -1,18 +1,24 @@
 import FreeSimpleGUI as sG
+import functions
 
-label = sG.Text("What are dolphins?")
-option1 = sG.Radio("Amphibians", group_id="question1")
-option2 = sG.Radio("Fish", group_id="question1")
-option3 = sG.Radio("Mammals", group_id="question1")
-option4 = sG.Radio("Birds", group_id="question1")
+label = sG.Text("Type in a to-do")
+input_box = sG.InputText(tooltip="Enter a to-do", key="todo")
+add_button = sG.Button("Add")
 
-window = sG.Window("File Compressor",
-                   layout=[[label],
-                           [option1],
-                            [option2],
-                            [option3],
-                            [option4],
-                           ])
+window = sG.Window("My To-Do App",
+                   layout=[[label],[input_box, add_button]],
+                   font=('Helvetica', 20))
+while True:
+    event, values = window.read()
+    print(event, values)
+    match event:
+        case "Add":
+            todos = functions.get_todos()
+            print(todos)
+            new_todo = values['todo'] + "\n"
+            todos.append(new_todo)
+            functions.write_todos(todos)
+        case sG.WINDOW_CLOSED:
+            break
 
-window.read()
 window.close()
