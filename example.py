@@ -7,13 +7,19 @@ This module provides GUI to manage a to-do list.
 import FreeSimpleGUI as sG
 import functions
 import time
+import os
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt", "w") as file:
+        pass
 
 sG.theme('Black')
 
 clock = sG.Text('', key='clock')
 label = sG.Text("Type in a to-do")
 input_box = sG.InputText(tooltip="Enter a to-do", key="todo")
-add_button = sG.Button("Add")
+add_button = sG.Button(size=2, image_source="add.png", mouseover_colors="LightBlue2",
+                       tooltip="Add Todo", key="Add")
 list_box = sG.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=(45, 10))
 
 edit_button = sG.Button("Edit")
